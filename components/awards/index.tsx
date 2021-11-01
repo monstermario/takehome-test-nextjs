@@ -16,20 +16,17 @@ export const Awards: React.FC = () => {
   const updateList = (item: NomineeData, id: string) => {
     const newSelectedList = selectedList;
     newSelectedList[id] = item;
-    console.log(newSelectedList);
     setSelectedList(newSelectedList);
   };
 
   const submitList = () => {
     setShowModal(true);
-    console.log(selectedList);
   };
 
   useEffect(() => {
     const getData = async () => {
       const response = await fetch('api/ballots', { method: 'GET' });
       const data = await response.json();
-      console.log(data);
       if (data.items) setCategories(data.items);
     };
     getData();
